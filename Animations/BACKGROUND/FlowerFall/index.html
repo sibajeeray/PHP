@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	<link href="stylemain.css" rel="stylesheet">
+</head>
+<body class="darkBg">
+
+    <div class="col-md-8 bannWrapMain">
+        <div class="bannWrap"></div>
+    </div>
+
+
+  
+    <script src='js/snowfall.jquery.min.js'></script>
+    <script type='text/javascript'>     
+        jQuery(document).ready(function(){
+            //Start the snow default options you can also make it snow in certain elements, etc.
+            jQuery(".darkBg").snowfall({image :"images/flower-01.png", minSize: 5, maxSize:20, minSpeed : 1, maxSpeed : 3});
+			// jQuery(".darkBg").snowfall({image :"images/flower-02.png", minSize: 5, maxSize:20, minSpeed : 1, maxSpeed : 3});
+			// jQuery(".darkBg").snowfall({image :"images/flower-03.png", minSize: 5, maxSize:20, minSpeed : 1, maxSpeed : 3});
+			// jQuery(".darkBg").snowfall({image :"images/flower-04.png", minSize: 5, maxSize:20, minSpeed : 1, maxSpeed : 3});
+			jQuery(document).snowfall({collection : '.collectonme', flakeCount : 1000});
+        });
+     </script>
+</body>
+</html>

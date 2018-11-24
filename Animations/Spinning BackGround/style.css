@@ -1,0 +1,71 @@
+
+html, body {
+   margin: 0;
+   width: 100%;
+   height: 100%;
+}
+body {
+   background: #fff;
+}
+.bodycontainer {
+    background: #000;
+    position: relative;
+  }
+#maindiv {
+   width: 100%;
+   height: 100%;
+   position: relative;
+   overflow: hidden;
+   /* Center text */
+   text-align: center;
+   -webkit-align-items: center;
+   -ms-flex-align: center;
+   align-items: center;
+   display: -webkit-flex;
+   display: flex;
+}
+#maindiv::before {
+   background: url("rays.png") no-repeat center center;
+   background-size: 80% 80%;
+   content: "";
+   width: 100vw;
+   height: 100vw;
+   position: absolute;
+   animation: spin 20s linear infinite;
+}
+.responsiveImg {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; 
+}
+@keyframes spin {
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+.content {
+   position: relative;
+   margin:auto;
+}
+@media only screen and (max-width: 700px) {
+    .content {
+        margin: 0 25% 0 25%
+     }
+}
+.devipic {
+   padding: 0;
+}
+@media only screen and (min-width: 950px) {
+    .bodycontainer{
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    #maindiv::before {
+      /* background-size: 100% 100%; */
+      width: 100%;
+      height: 120%;
+    }
+}  

@@ -1,0 +1,233 @@
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+html, body {
+    height : 100%;
+}
+.createh1 {
+    color: rgb(49, 56, 8);
+    position: relative;
+    text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+    animation: shake 3s infinite ;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+}
+#nameAni {
+    color: hsla(0, 0%, 100%, .9);
+    font: normal 40px Varela Round, sans-serif;
+    height: 40px;
+    left: 0;
+    letter-spacing: 5px;
+    margin: -80px 0 0 0;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    padding-top: 100px;
+    animation: move linear 3000ms  alternate infinite; 
+}
+
+#wishing {
+    margin: 50px auto;
+	text-align: center;
+	text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+	color: rgb(221, 26, 26);
+    opacity: 1;
+    font-family: 'Lobster', helvetica, arial;
+    font: 200px 30px;
+    padding-top: 40px;
+    animation: scaling 4000ms infinite; 
+
+}
+
+.login-form {
+    margin: 0 auto !important;
+    float: none;
+    padding: 15px;
+}
+
+.login-form form.form-horizontal {
+    padding: 10px 20px;
+}
+i {
+    color:#f06414;
+}
+
+#timer {
+    text-align: center;
+    font-size: 15px; 
+    font-weight: 700; 
+    color:#1f8b1c;
+    position : relative;
+}
+
+/* All Keyframes Comes here */
+@keyframes shake {
+    10%{
+        transform: translate3d(0, 0, 10px);
+      }
+    25%{
+      transform: translate3d(3px, 0, 0);
+    }
+    40%{
+        transform: translate3d(-3px, 0, 0);
+      }
+    
+    55% {
+      transform: translate3d(0, 3px, 0);
+    }
+  
+    70% {
+      transform: translate3d(0, -3px, 0);
+    }
+
+    85% {
+        transform: translate3d(0, 0, -10px);
+      }
+  }
+  
+
+  @keyframes move {
+    0% {
+      text-shadow:
+        2px -2px 0 rgb(255, 0, 0), 
+        1.5px -1.5px 0 rgb(255, 0, 0), 
+        1px -1px 0 rgb(255, 0, 0), 
+        0.5px -0.5px 0 rgb(255, 0, 0),
+        -2px 2px 0 rgb(217, 255, 0), 
+        -1.5px 1.5px 0 rgb(217, 255, 0), 
+        -1px 1px 0 rgb(217, 255, 0),  
+        -0.5px 0.5px 0 rgb(217, 255, 0);
+        color: rgb(224, 224, 160);
+    }
+    25% {    
+      text-shadow:      
+        -2px -2px 0 rgb(217, 255, 0), 
+        -1.5px -1.5px 0 rgb(217, 255, 0), 
+        -1px -1px 0 rgb(217, 255, 0), 
+        -0.5px -0.5px 0 rgb(217, 255, 0), 
+        2px 2px 0 rgb(255, 0, 0), 
+        1.5px 1.5px 0 rgb(255, 0, 0), 
+        1px 1px 0 rgb(255, 0, 0), 
+        0.5px 0.5px 0 rgb(255, 0, 0);
+        color: rgb(223, 106, 106);   
+    }
+    50% {
+      text-shadow:
+        -2px 2px 0 rgb(255, 0, 0), 
+        -1.5px 1.5px 0 rgb(255, 0, 0), 
+        -1px 1px 0 rgb(255, 0, 0), 
+        -0.5px 0.5px 0 rgb(255, 0, 0),
+        1.5px -1.5px 0 rgb(217, 255, 0), 
+        1.5px -1.5px 0 rgb(217, 255, 0), 
+        1px -1px 0 rgb(217, 255, 0), 
+        0.5px -0.5px 0 rgb(217, 255, 0);
+        color: white;
+    }
+    75% {
+      text-shadow:
+        2px 2px 0 rgb(217, 255, 0), 
+        1.5px 1.5px 0 rgb(217, 255, 0), 
+        1px 1px 0 rgb(217, 255, 0), 
+        0.5px 0.5px 0 rgb(217, 255, 0),
+        -2px -2px 0 rgb(255, 0, 0), 
+        -1.5px -1.5px 0 rgb(255, 0, 0), 
+        -1px -1px 0 rgb(255, 0, 0), 
+        -0.5px -0.5px 0 rgb(255, 0, 0)      
+    }
+    100% {
+      text-shadow:
+        2px -2px 0 rgb(255, 0, 0), 
+        1.5px -1.5px 0 rgb(255, 0, 0), 
+        1px -1px 0 rgb(255, 0, 0), 
+        0.5px -0.5px 0 rgb(255, 0, 0),
+        -2px 2px 0 rgb(217, 255, 0), 
+        -1.5px 1.5px 0 rgb(217, 255, 0), 
+        -1px 1px 0 rgb(217, 255, 0), 
+        -0.5px 0.5px 0 rgb(217, 255, 0)
+    }  
+  }
+
+  @keyframes scaling {
+    50%{
+        -ms-transform: scale(0.7,0.7); /* IE 9 */
+        -webkit-transform: scale(0.7,0.7); /* Safari */
+        transform: scale(0.7,0.7); /* Standard syntax */
+      }
+
+    70% {
+        -ms-transform: scale(1,1); /* IE 9 */
+        -webkit-transform: scale(1,1); /* Safari */
+        transform: scale(1,1); /* Standard syntax */
+    }
+  }
+
+
+
+  /* HERE IS RUNNING BORDER LETTER ---HAPPY DURGA PUJA*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+.text {
+  fill: rgb(214, 199, 199);
+  stroke-width: 6;
+  stroke-linejoin: round;
+  stroke-dasharray: 70 330;
+  stroke-dashoffset: 0;
+  -webkit-animation: stroke 5s infinite linear;
+  animation: stroke 5s infinite linear;
+}
+
+.text:nth-child(5n + 1) {
+  stroke: #F2385A;
+  -webkit-animation-delay: -1.2s;
+  animation-delay: -1.2s;
+}
+.text:nth-child(5n + 2) {
+  stroke: rgb(211, 144, 10);
+  -webkit-animation-delay: -2.4s;
+  animation-delay: -2.4s;
+}
+
+.text:nth-child(5n + 3) {
+  stroke: rgb(211, 7, 17);
+  -webkit-animation-delay: -3.6s;
+  animation-delay: -3.6s;
+}
+
+.text:nth-child(5n + 4) {
+  stroke: rgb(10, 156, 144);
+  -webkit-animation-delay: -4.8s;
+  animation-delay: -4.8s;
+}
+
+.text:nth-child(5n + 5) {
+  stroke: rgb(99, 175, 6);
+  -webkit-animation-delay: -6s;
+  animation-delay: -6s;
+}
+
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+
+/* body {
+  background: rgb(255, 255, 255);
+  background-size: .2em 100%;
+  font: 14.5em/1 Open Sans, Impact;
+  text-transform: uppercase;
+  margin: 0;
+} */
+
+svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

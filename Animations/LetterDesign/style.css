@@ -1,0 +1,81 @@
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+/* body {
+  background: hsla(0, 0%, 0%, .9); 
+} */
+
+h1 {
+  color: hsla(0, 0%, 100%, .9);
+  font: normal 140px Varela Round, sans-serif;
+  height: 140px;
+  left: 0;
+  letter-spacing: 5px;
+  margin: -80px 0 0 0;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 50%;
+  width: 100%;
+  animation: move linear 3000ms  alternate infinite; 
+}
+
+@keyframes move {
+  0% {
+    text-shadow:
+      4px -4px 0 rgb(255, 0, 0), 
+      3px -3px 0 rgb(255, 0, 0), 
+      2px -2px 0 rgb(255, 0, 0), 
+      1px -1px 0 rgb(255, 0, 0),
+      -4px 4px 0 rgb(217, 255, 0), 
+      -3px 3px 0 rgb(217, 255, 0), 
+      -2px 2px 0 rgb(217, 255, 0),  
+      -1px 1px 0 rgb(217, 255, 0);
+      color: rgb(224, 224, 160);
+  }
+  25% {    
+    text-shadow:      
+      -4px -4px 0 rgb(217, 255, 0), 
+      -3px -3px 0 rgb(217, 255, 0), 
+      -2px -2px 0 rgb(217, 255, 0), 
+      -1px -1px 0 rgb(217, 255, 0), 
+      4px 4px 0 rgb(255, 0, 0), 
+      3px 3px 0 rgb(255, 0, 0), 
+      2px 2px 0 rgb(255, 0, 0), 
+      1px 1px 0 rgb(255, 0, 0);
+      color: rgb(223, 106, 106);   
+  }
+  50% {
+    text-shadow:
+      -4px 4px 0 rgb(255, 0, 0), 
+      -3px 3px 0 rgb(255, 0, 0), 
+      -2px 2px 0 rgb(255, 0, 0), 
+      -1px 1px 0 rgb(255, 0, 0),
+      4px -4px 0 rgb(217, 255, 0), 
+      3px -3px 0 rgb(217, 255, 0), 
+      2px -2px 0 rgb(217, 255, 0), 
+      1px -1px 0 rgb(217, 255, 0);
+      color: white;
+  }
+  75% {
+    text-shadow:
+      4px 4px 0 rgb(217, 255, 0), 
+      3px 3px 0 rgb(217, 255, 0), 
+      2px 2px 0 rgb(217, 255, 0), 
+      1px 1px 0 rgb(217, 255, 0),
+      -4px -4px 0 rgb(255, 0, 0), 
+      -3px -3px 0 rgb(255, 0, 0), 
+      -2px -2px 0 rgb(255, 0, 0), 
+      -1px -1px 0 rgb(255, 0, 0)      
+  }
+  100% {
+    text-shadow:
+      4px -4px 0 rgb(255, 0, 0), 
+      3px -3px 0 rgb(255, 0, 0), 
+      2px -2px 0 rgb(255, 0, 0), 
+      1px -1px 0 rgb(255, 0, 0),
+      -4px 4px 0 rgb(217, 255, 0), 
+      -3px 3px 0 rgb(217, 255, 0), 
+      -2px 2px 0 rgb(217, 255, 0), 
+      -1px 1px 0 rgb(217, 255, 0)
+  }  
+}

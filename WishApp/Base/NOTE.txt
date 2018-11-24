@@ -1,0 +1,8 @@
+Change the folder name event_name to your wish event name.
+
+Use command present in query.sql file to create event_wish table in your DB(local/production)If it is not already presen there.
+
+Always add .htaccess and robots.txt file in the event_name folder, These are helpful for the SEO and in .htaccess we have defined rules for
+	redirection of the wish url to our wishApp.php and other security protocols are maintained in that.
+
+	

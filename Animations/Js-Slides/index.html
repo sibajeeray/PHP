@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+        .slideimg {
+            vertical-align: middle;
+            width:280px;
+            height:280px;
+            -webkit-border-radius: 0px 0px 0px 0px;
+            -moz-border-radius: 0px 0px 0px 0px;
+            border-radius: 0px 0px 0px 0px;
+            /* border:1px solid #ff6600; */
+            background:rgba(32,43,27,0.4);
+            -webkit-box-shadow: #B3B3B3 3px 4px 3px;
+            -moz-box-shadow: #B3B3B3 3px 3px 3px; 
+            box-shadow: #B3B3B3 3px 3px 3px;
+        }
+
+        .slide-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="slide-container">
+       
+            <img class="slideimg" src="https://4.bp.blogspot.com/-ipXZfeSz0zo/W5-iCkbuErI/AAAAAAAACQM/AKX6tGZLzDAVhXyIKJvCHfkJoYTDzYiOwCLcBGAs/s1600/1.Navratri%2Bfree%2Bfestival%2Bwishing%2Bwebsite%2Bscript%2Bfor%2Bblogger%2B2018%2Bpro%2Bscript%2Bdownload%2Band%2Bearn%2Bmoney%2B%25E0%25A4%25B6%25E0%25A5%2588%25E0%25A4%25B2%25E0%25A4%25AA%25E0%25A5%2581%25E0%25A4%25A4%25E0%25A5%258D%25E0%25A4%25B0%25E0%25A5%2580%2B%2BShailaputri.png"/>
+            <img class="slideimg" src="https://1.bp.blogspot.com/-UXK2yY9217s/W5-iCnEgq9I/AAAAAAAACQQ/45GfBoTM-9s9rbiz_FoSTsouhiQ9NB9UwCLcBGAs/s1600/2.Navratri%2Bfree%2Bfestival%2Bwishing%2Bwebsite%2Bscript%2Bfor%2Bblogger%2B2018%2Bpro%2Bscript%2Bdownload%2Band%2Bearn%2Bmoney%2B%25E0%25A4%25AC%25E0%25A5%258D%25E0%25A4%25B0%25E0%25A4%25B9%25E0%25A5%258D%25E0%25A4%25AE%25E0%25A4%259A%25E0%25A4%25BE%25E0%25A4%25B0%25E0%25A4%25BF%25E0%25A4%25A3%25E0%25A5%2580%2BBrahmacharini.png"/>
+            <img class="slideimg" src="https://2.bp.blogspot.com/-nrt-xTtmbgA/W5-iCj_jc9I/AAAAAAAACQU/Mzrq92iQhlAgjDzFvWvDXhXM0nRneppJACLcBGAs/s1600/3.Navratri%2Bfree%2Bfestival%2Bwishing%2Bwebsite%2Bscript%2Bfor%2Bblogger%2B2018%2Bpro%2Bscript%2Bdownload%2Band%2Bearn%2Bmoney%2B%25E0%25A4%259A%25E0%25A4%25A8%25E0%25A5%258D%25E0%25A4%25A6%25E0%25A5%258D%25E0%25A4%25B0%25E0%25A4%2598%25E0%25A4%2582%25E0%25A4%259F%25E0%25A4%25BE%2BChandraghanta.png" />
+    </div>
+    <div style="text-align:center">
+            <span class="slideholder"></span> 
+            <span class="slideholder"></span> 
+            <span class="slideholder"></span> 
+    </div>
+          
+
+    <script>
+            var slideIndex = 0;
+            showSlides();
+            
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("slideimg");
+                var dots = document.getElementsByClassName("slideholder");
+                for (i = 0; i < slides.length; i++) {
+                   slides[i].style.display = "none";  
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}    
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex-1].style.display = "block";  
+                dots[slideIndex-1].className += " active";
+                setTimeout(showSlides, 350); // Change image every 3 seconds
+            }
+        </script>
+    
+    
+</body>
+</html>

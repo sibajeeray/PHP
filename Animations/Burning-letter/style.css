@@ -1,0 +1,28 @@
+/* Main styles */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+.text {
+  fill: url(#p-fire);
+  stroke: #fff;
+  stroke-width: 8;
+  stroke-opacity: .5;
+}
+
+/* Other styles */
+html, body {
+  height: 90%;
+}
+
+body {
+  background: #fff;
+  background-size: .2em 100%;
+  font: 14.5em/1 Open Sans, Impact;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+svg {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+}

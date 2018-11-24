@@ -1,0 +1,51 @@
+:root {
+  --3DshadowE8: 0 0 1px, 0 0 1.1px rgba(0, 0, 0, .7), 0 1px 1px rgba(0, 0, 0, .7), 1px 0 1px, 1px 1px 1px rgba(0, 0, 0, .7), 2px 0 1px, 2px 1px 1px rgba(0, 0, 0, .7), 3px 0 1px, 3px 1px 1px rgba(0, 0, 0, .7), 4px 0 1px, 4px 1px 1px rgba(0, 0, 0, .7), 5px 0 1px, 5px 1px 1px rgba(0, 0, 0, .7), 6px 0 1px, 6px 1px 1px rgba(0, 0, 0, .7), 7px 0 1px, 7px 1px 1px rgba(0, 0, 0, .7), 8px 0 1px, 8px 1px 1px rgba(0, 0, 0, .7), 9px 0 1px, 9px 1px 1px rgba(0, 0, 0, .7), 10px 0 1px, 10px 1px 1px rgba(0, 0, 0, .4), 1px 0 1px rgba(0, 0, 0, .7), 2px 0 1px rgba(0, 0, 0, .7), 3px 0 1px rgba(0, 0, 0, .7), 4px 0 1px rgba(0, 0, 0, .7), 5px 0 1px rgba(0, 0, 0, .7), 6px 0 1px rgba(0, 0, 0, .7), 7px 0 1px rgba(0, 0, 0, .7), 8px 0 1px rgba(0, 0, 0, .7), 9px 0 1px rgba(0, 0, 0, .7), 10px 0 1px rgba(0, 0, 0, .4)
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+body {
+  padding: 1em
+}
+
+svg {
+  position: absolute;
+  top: -999em
+}
+
+p {
+  position: relative;
+  font-style: italic;
+  font-size: 8rem;
+  text-align: center;
+  color: aqua;
+  text-shadow: var(--3DshadowE8);
+  transform: rotateZ(-2deg)translate3d(0, 0, 0)
+}
+
+p:before,
+p:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  content: attr(data-text);
+  text-shadow: 0 0 .7px, 0 0 1.1px, 0 0 1.1px
+}
+
+p:before {
+  color: #099;
+  left: 70px;
+  top: 2px;
+  z-index: -1;
+  filter:url(#motion-blur)
+}
+
+p:after {
+  color: #099
+}

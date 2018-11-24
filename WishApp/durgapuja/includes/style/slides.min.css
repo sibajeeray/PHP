@@ -1,0 +1,26 @@
+.slideimg {
+    vertical-align: middle;
+    width:100%;
+    height: auto;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+    /* border:1px solid #ff6600; */
+    /* background:rgba(32,43,27,0.4); */
+    /* -webkit-box-shadow: #B3B3B3 3px 4px 3px;
+    -moz-box-shadow: #B3B3B3 3px 3px 3px; 
+    box-shadow: #B3B3B3 3px 3px 3px; */
+}
+
+.slide-container {
+    margin: auto;
+    width: 80%;
+    padding: 1px;
+    overflow: auto;
+}
+
+@media screen and (min-width: 700px) {
+    .slide-container {
+        width: 60%;
+    }
+}

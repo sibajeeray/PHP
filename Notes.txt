@@ -1,0 +1,661 @@
+PHP Basic
+====================
+    Write any PHP code inside HTML body inside <?php  ?> tag.
+
+    To print in browser
+    --------------------
+    Use echo. 
+
+    If you have to concatinate any variable with the string, then use dot(.) after the variable 
+    and then write the variable name. In case of JAVA it is + 
+
+    To declare a Variable
+    ----------------------
+    Use $ and the variable name. Ex - $abc , $My_name, $gae
+
+
+PHP Bult-in Function
+==========================
+    Math Functions(predefined)
+    --------------------------
+        pow(base, power); - echo pow(2,7); = 2 to the power 7
+        rand(); = Return random Number , rand(1,1000) = return number between 1 to 1000
+        sqrt(number) = return square root of 100
+        ceil(4.22) = round up to the upper number, i.e answer here is 5
+        floor(4.88) = rond up to the down number. Answer here is 4
+        round(number) = round up to the nearest number. round(4.4) = 4 and round(4.7) = 5
+
+        ** Ref php.net/manual/ref.math.php
+
+    String Functions(predefined)
+    ----------------------------
+        strlen(string) = return the length of the string
+        strtoupper(string) = change all the letter of the string to Uper case.
+        strtolower(string) = change all the letter of the string to Lower case.
+
+        ** Ref php.net/ref.strings
+
+    Array Functions(Predefined)
+    ----------------------------
+        max($array_name) = return max number in the Array
+        min($array_name) = return min in the array
+        echo print_r($array_name) = this will print whole array in key-value pair format
+        sort($array_name) = return sorted array
+
+        ** Ref php.net/manual/en/ref.array.php
+
+FORM in PHP
+=====================
+    There are super Global variables in PHP for form data handling. Such as $_POST & $_GET
+    Super global variables are available in our script globally, any where inside the function or outside of it.
+    Here $_POST nad $_GET an associative Arrays which contains all the field name and value entered in it.
+
+    We can then use isset() function to check if the form is submitted or not and then run a piece of
+    code if the form is submitted, else don't run it. if(isset($_POST['submit'])){}, here submit is
+    the name attribute value of submit type field.
+
+    Then we can get the data of each field of the form by $_POST['Name_Of_field']. Or if we
+    echo $_POST we'll get all the data input from the form as an associative array.
+
+    We can use $_GET to get all the GET type method values, For example if any value is passed through the url.
+
+    Example-
+        If in 38.getSuperGlobal.php file we write
+            <?php 
+                print_r($_GET);   //As $_GET and $_POST are associative arrays
+            ?>
+
+        and then if we hit a url, localhost/38.getSuperGlobal.php
+            we'll get out put Array(). i.e empty array
+        But if we hit a url, localhost/38.getSuperGlobal.php?id=100&name=Sibajee    
+            we'll get o/p as Array([id]=>10 [name]=>sibajee)
+
+
+DataBase in PHP
+=======================
+    To do datbase operations we use API in PHP like mysqli api.
+
+    Make Connection
+    ----------------
+        There is a function to make connection to the database, i.e
+            mysqli_connect('server_url', 'username', 'password', 'dataBase_name'); This function return a Connection Object
+
+            In our case(for phpmyadmin) 
+                server_url = 'localhost' (as we are using database installed in our own computer)
+                username = 'root'
+                passwrod = ''  (Empty, As it is not created) 
+                database_name = 'test'   
+
+        So, $connection = mysqli_connect('localhost', 'root', '', 'test');
+            if($connection){----}
+
+        If connection could not established then there is a function in mysqli, i.e die('message')
+        which will output a message and exit the script automatically.No line after die() will be executed if
+        this die() get a chance to execute.
+
+        if($connection)
+            echo "Connection Established";
+        else
+            die("Connection failed");
+
+    Run Query
+    ----------------
+        To run any query on DB we have to make use of the mysqli_query function.
+        mysqli_query('connection_object' , 'query_String') which returns a boolean value. true(success), false(failed)
+
+        Ex - 
+            $query = "insert into users values('Sibajee', 2000)";
+            $result = mysqli_query($connection, $query); 
+            if($result)
+                echo "Query Executed";
+            else
+                die("Query failed");
+
+    Get Error
+    -----------
+        To get error we have functions. like
+
+        mysqli_connect_error() ---> This will print the error occured during connection.
+        (or)
+        mysqli_error($connection); --> This will print the error occured on query After connection established.
+
+        so we can write 
+            if($result)
+                echo "Query Executed";
+            else
+                die("Query failed".mysqli_error($connection));
+
+
+    Read Data from DB
+    ----------------------
+        By running "Select * from Db" query we will get all the data of the DB. Let's store it in 
+        a variable.
+            $query = "select * from users";
+            $result = mysqli_query($connection, $query); 
+
+        Now to show each row of the db, we have to iterate the $result.
+
+        For this we have two mysqli function i.e 
+            mysqli_fetch_row($result).  ->this function return each row of the DB as normal array.
+            mysqli_fetch_assoc($result). ->This function return each row of DB as an Associative array,
+                                            Where the key will be the table metadata like id,username.
+
+            Iterate it
+            
+            1st Case :  while($row = mysqli_fetch_row($result){
+                            print_r($row);
+                        }) 
+
+                    Result here is : Array ( [0] => 1 [1] => Sibajee Ray [2] => chetana ) Array ( [0] => 2 [1] => Subbu [2] => cbag )
+
+                
+            2nd Case  : while($row = mysqli_fetch_assoc($result){
+                            print_r($row);
+                        }) 
+
+                    Result here is : Array ( [id] => 1 [username] => Sibajee Ray [password] => chetana ) Array ( [id] => 2 [username] => Subbu [password] => cbag )
+
+Include File in PHP
+====================
+    We can include any php file to another file and directly can use the variables and
+    functions of the included file without creating those in the current file again.
+
+    To include one file, we have to use (include "path/file_name.php") inside the <?php tag. And then ;
+
+    Ex-
+        <?php include "file1.php"; ?>
+        <?php
+            echo "file1_variable";
+        ?>
+
+        (or)
+
+        <?php include "file1.php";
+            echo "file1_variable";
+        ?>
+
+
+PHP Security
+==============
+
+    mysqli_real_escape_string($connection, $username)
+    --------------------------------------------------
+        We should pass our username or any other strings through this function to sanitise it from the 
+        SQL Injections. This Function prevent any sql queries through the form parameters and also alow us to
+        insert escape characters.
+        Ex-
+            in username we can not pass Sibajee's as it has 's.
+            But if we will pass the username with the escape characters through this func, it will allow us to use that
+
+        Ex-
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $username = mysqli_real_escape_string($connection, $username);
+            $password = mysqli_real_escape_string($connection, $password);
+            $query = "insert into users values('$username','$password')" ;
+
+
+    PASSWORD ENCRYPTION
+    ------------------------
+        1st of all change the max lenght of password field of the DB to at least 200. 
+        Bcoz the encrypted passwrod can be very long.
+
+        We will use crypt() function to change the user password to long, unpredictable, alpha-numeric character
+        before we save it to the DB. By seeing DB also nobody can get the real passwrod of a user.
+
+        We need another parameter i.e salt, bcoz crypt() create weaker password without salt.
+
+        Salt is hashing to change the password.We need to use a selected(There are many, see the reference) hash type to salt the password.
+        We will use blowfish hashing here. 
+
+        crypt('','') has two parameters. 1st one compusory and 2nd is optional. Where
+            1st parameter is out password which we want to encrypt.
+            2nd parameter is salt, which contains hash parameter(hash format) to ditinguish which hashing we'll use 
+                and somearbitary string.
+
+                The hash format u can find in the documentation. For blowfish hashing
+                $hashFormat = "$2y$";
+
+                With this hash format we have to add a number which state that how many time the hashing should
+                be done to encrypt the password.
+
+                So, $hashFormat = "$2y$10$"; (Runs 10 times)
+
+        So let's $salt = $hashFormat."AnyStringOfLengthMoreThan22CanBeUsed".
+
+        Now $encryptedPassword = crypt($password, $salt);
+
+        Ex- Final code is
+        ----------------
+            $password = $_POST['password'];
+
+            $hashFormat = "$2y$10$";
+            $salt = $hashFormat."AnyStringOfLengthMoreThan22CanBeUsed";
+            $encryptedPassword = crypt($password, $salt);
+
+        Encrypted password Verifiction during Login
+        --------------------------------------------
+            Encrypted password that is saved in DB always contains the salt as a prefix.
+
+            So if we call again pass the th encrypted password through crypt() as salt, it will extract the 
+            1st 22 characters and get the exact salt we used to encrypt it.
+            So to verify the passwrod we can write
+
+                if ($encryptedPassword == crypt($password, $encryptedPassword)) {
+                    echo "Success! Valid password";
+                } else {
+                    echo "Invalid password";
+                } 
+
+                (or)
+
+                function validate_pw($password, $encryptedPassword){
+                    return crypt($password, $encryptedPassword)==$encryptedPassword; //return true or false
+                }
+
+
+        *Ref php.net/manual/function.crypt.php
+
+Cookies and Session in PHP
+===========================
+    Both are almost same. Session works along with the cookies. But there are limited space(around 2mb) for 
+    cookies and we can use space in hard disk as much as we want to store sessions.
+
+    Cookie is the permanent Data saved in the user's browser, won't expire before the expiry date we set.
+    Session is not permanent. For each browser session one session file will be created in the server submitted
+        which will be cleared once we close the browser.
+
+    Cookies
+    ---------
+        All the cookies are saved in a super global variable called $_COOKIE which is an associative array.
+
+        setcookie()
+        -------------
+        setcookie() is the function used to set new cookie to $_COOKIE. It has 3 parameters.
+            1st --> Name of Cookies
+            2nd --> The value of the cookie, could be anything
+            3rd --> expiration of the cookie. When do u want it to expire.
+                    For expiration we use time() funtion. If we want it to be there for a week, then 
+                    $expiration = time() + (60*60*24*7);  (In seconds)
+
+        example-
+            $name= "TestCookie";
+            $value = 100;
+            $expiration = time() + (60*60*24*7);
+            setcookie($name, $value, $expiration);
+
+        To check all the cookies that is saved in google chrome browser, 
+        go to setting->show advanced setting->content setting->All cookies and site data"
+
+        Get Cookie value
+        ------------------
+            To get the cookie value we simply have to echo the associative array $_COOKIE with your cookie name.
+
+            echo $_COOKIE["TestCookie"]; //It will print only the value of the cookie.
+
+    Session
+    -----------
+        In case of session, data does not be saved in user browser. If we start a session, a cookie will be
+        created in the user browser which will cintent the session ID. But a data file will be created on the
+        server which will save all the data belongs to the same browser in that file. When we start a session,
+        PHP start a new session for a browser and the session will be valid till the browser open. Once closed,
+        session will be stoped.
+
+        Start and store value in $_SESSION
+        -------------------------------
+        session_start(); 
+        $_SESSION["name"] = "Sibajee";
+        $_SESSION["age"] = 25;
+        $_SESSION["greet"] = "Hello Sibajee";
+
+        We can store unlimited key-value pairs. All the value will be stored in a file in the server and 
+        the ID to of the session will be stored in the user browser as cookies named PHPSESSID, which will
+        help to refer to the corresponding session file of the browser.
+
+        To get value stored in the $_SESSION from another php file
+        ------------------------------------------------------------
+        This $_SESSION file will be available to the every php file of our program, But we have to start
+        Session in every file to access that by session.start(); It will create new session only when session 
+        is not created for the browser, else it will use the already existing session file and it will get the
+        reference to that session file from the cookie saved in it named PHPSESSID.
+
+        session_start();
+        echo $_SESSION["name"];
+        echo $_SESSION["age"];
+
+    NOTE: Session for a browser will be cleared once we close the browser. And after closing the browser
+    we can't access the Session values before we stored it again.
+
+Obejct Oriented PHP
+============================
+    Class describe an Object which has two types of data, Properties and function.
+
+    class is the key word to define a class in php.
+
+       class Class_name {
+
+       }
+
+    class_exists("Class_name") is a predefined function to check if the class is already defined or not.
+
+    Declare Properties nad Methods in a Class
+    -------------------------------------------
+        Properties
+        --------------
+            Class properties can be defined with "var" keyword and then variable name with $ sign as usual.
+
+            var $no_of_wheels = 4;
+            var $color = "white";
+
+        Methods
+        -----------
+        We can create normal function inside a class. Function inside a class is called method, not a function.
+
+        class Car {
+
+            function move_wheels(){
+                echo "Wheels started moving";
+            }
+        }
+
+        we can check if the method exist or not by predefined function method_exists("class_name", "method_name") function.
+
+    Instanciate a Class & call the class methods and properties
+    ------------------------------------------------------------
+        We can create object of php class simply by "new" keyword and class constructor and then can save it on a variable.
+
+        $bmw = new Car();
+        $mercedes = new Car();
+
+        To call a method of the class on any object of it, we use arrow operator.
+            $bmw -> move_wheels();
+
+        To call any property of the object also we use arrow operator.
+            echo $bmw -> color;
+                But here we don't write $ infront of the property name. Only color, not $color.
+
+    $this
+    ---------
+        Inside a class, $this keyword refers the current object of the class.
+
+        class Car {
+            var $no_of_wheels = 4;
+
+            function changeWheels() {
+                $this->no_of_wheels = 10;
+            }
+        }
+
+        $truck = new Car();
+        $truck -> changeWheels();
+        echo $truck->no_of_wheels; 
+        
+        Here the O/P will be 10, not 4. Bcoz we have called changeWheels() on truck.
+        And in this changeWheel function we used $this->no_of_wheels, 
+        means no_of_wheels property of current object, means the object on which the method is called.
+
+
+    Inheritance
+    ============
+        Child class can inherit properties and methods from parent class.
+
+        We use "extends" keyword to inherit parent data.
+
+        <?php
+            class Vehicle {
+                var $wheelcount = 4;
+                var $color = "white";
+
+                function moveWheels() {
+                    echo "Wheels are moving";
+                }
+            }
+
+            $bmw = new Vehicle();
+
+            class Truck extends Vehicle {
+
+                //Nothing is overriden here
+            }
+
+            $truckObject = new Truck();
+
+            echo $truckObject->wheelcount; //* This will print 4. Truck class does not has wheelcount property. It will print it's parent class property, i.e Vehicle class.
+
+            $truckObject->moveWheels(); // this will execute Vehicle class moveWheel() method.
+
+        ?>
+
+        Constructors
+        --------------
+            Contructor gets executed every time we create object of a class. it assigns the default values to the object properties.
+
+            In PHP we write constructor exactly as the function, But that function name should be __construct.
+
+                ex- 
+                    function __construct(){
+
+                    }
+
+            So if we have any common action we want to do everytime we create object then we should write those codes inside constructor.
+
+            We can also assign values to the Object through it's constructor while creating new object.
+                
+                class Vehile {
+                    function __construct($wheel, $color){
+                        $this->wheelsCount = $wheel;
+                        $this->color = $color;
+                    }
+                }
+                and then while creating object, pass 2 parameters --->  $bmw = new Vehicle(4, "white");
+
+            *constructor can not be overloaded in php. We can write only one constructor in a class which may have Zero argumenmt,
+            Or may have any no of arguments.
+
+        Overriding
+        ---------
+            We can override parent class properties and method and change it's value or functionality in child class, as per the requirements.
+
+            <?php
+            class Vehicle {
+                var $wheelcount = 4;
+                var $color = "white";
+
+                function moveWheels() {
+                    echo "Vehicle Wheels are moving";
+                }
+            }
+
+            class Truck extends Vehicle {
+
+                var $wheelcount = 10; //Overriden Vehicle class wheelcount as truck has 10 wheels requirement.
+
+                function moveWheels() {
+                    echo "Truck Wheels are moving";
+                }
+            }
+
+            $truckObject = new Truck();
+
+            echo $truckObject->wheelcount; //* This will print 10. 
+
+            $truckObject->moveWheels(); // this will execute Truck class moveWheels() method.
+
+        ?>
+
+        OverLoading in PHP
+        ----------------------
+            PHP deoes not support method OverLoading. We can not write another method with same name and different Number
+                of argument.
+
+            Constructor also can not be overloaded in PHP. We can write only one constructor(no agrgumnet / with argument ) inside a class.
+
+    Acess Modifiers
+    ------------------------
+         There are 3 types of access modifiers in PHP which can be applied on properties only, not on functions
+            1.public 
+            2.protected
+            3.private
+            4.static
+
+            Security order= public < protected < private
+
+        ex-
+            public $wheels= 4;
+            private $color = "white";
+            protected $ name ="BMW";
+
+            ** var $wheels =4; is same as public $wheels. 
+
+        -> public data can be accessed any where, in any file of our program, even outside the class body.
+        -> protected data can be accessed from the same class body and from it's child classes body. Outside the class or child class body it can not be accessible.
+        -> private data can be accessed from the same class body only.
+
+        * The data which can not be accesed from OutSide of the class should be managed inside a function of the class and 
+            then that function could be called outside the class in order to access the data.  
+
+        Ex-
+            <?php
+                class Car {
+                    public $wheels= 4;
+                    protected $ name ="BMW";
+                    private $color = "white";
+                }
+
+                $bmw = new Car();
+
+                echo $bmw->wheels; // O/P will be 4
+                echo $bmw -> name; // ERROR will occur. Bcoz we can't access private data from outside of the class.
+            ?>
+        To access the protected data from outside of the class, we can make use of a function.
+        Ex-
+            <?php
+                class Car {
+                    public $wheels= 4;
+                    protected $ name ="BMW";
+                    private $color = "white";
+
+                    function showData(){
+                        echo $this->name
+                    }
+                }
+
+                $bmw = new Car();
+
+                echo $bmw->wheels; // O/P will be 4
+                echo $bmw -> color;  // ERROR will occured. Bcoz we can't access private data from outside of the class.
+
+                $bmw ->showData(); // This is how we can access protected data from outside of the class body.
+            ?>
+
+        static modifier
+        -----------------
+            Property of a class can be static.
+            static properties are class level properties ans we can not access that using object reference.
+            It can only be accessed by using class name and "::" notation.
+
+            Ex-
+                <?php
+                    class Car {
+                        static $wheels= 4;
+
+                        function showData() {
+                            Car::$wheels = 10;
+                        }
+                    }
+
+                    $bmw = new Car();
+                    echo $bmw->wheels;   // This will give ERROR, as we can't access static data by object reference
+                    echo Car :: $wheel;  // This is correct syntax. Should be accessed using class name.
+                ?>
+
+
+Folders and Files
+==============================
+    Open a existing file or Create new File
+    ---------------------
+        For File handling there is a function in PHP called fopen('','') which open a stream and by using this stream we can read or write data to the file.
+        It has two parameters, Give the File Name with path in 1st arg and in 2nd arg the access type.
+            Access type might be Read('r') or Write('w') or both.
+        fopen() return a value which can define the access is permitted or not and it holds the connection stream also.
+
+        We can then close the stream by fclose($stream_reference);
+
+        Ex- 
+            $file = 'path/example.txt';
+            $handle = fopen($file, 'w');
+            fclose($handle);
+
+        This will open example.txt file in browser from path folder, if this file is not present there
+        then it will create that file there. (If we open txt file in browser, it will show empty body)
+
+    Write to the File
+    --------------------
+        We use fwrite('','') to write something in a file.
+        1st arg is the opened file_stream name and 2nd arg is the content we want to write to the file.
+
+        if($handle) {
+            fwrite($handle, "This is the content...");
+            fclose($handle);
+
+            echo "Content is written to the file successfully";
+        }
+        else {
+            echo "This Application is not able to write the file";
+        }
+
+        *But this will not add up content in the file if you run it multiple times. This will erase the previous content before writing.
+
+    Read file
+    -------------
+        fread('','') is the function to read data from a file.
+            1st arg --> File opened stream name
+            2nd arg --> No of bite you want to read, 10 or 20 or 2000, Each bite here is can hold single character 
+
+        It returns data of characters as equal to the bite we have provided in the 2nd arg of fread().
+        We can then store that cintent in a php variable.
+
+        ** If we have to read all the characters from the file, then in 2nd arg of fread() we can write 
+            filesize($file) ---> This will return the actual file size.
+
+        NOTE --> During read file operation when we create stream(fopen()), the permission should be 'r',
+        If we'll put 'w' there, this will clear all the data from the file.
+
+    Delete File
+    ---------------
+        unlink('path/file_name.extension'); is the function to delete a file. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
