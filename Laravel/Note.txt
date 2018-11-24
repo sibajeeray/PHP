@@ -1,0 +1,15 @@
+5 phases of building a website
+---------------------------------
+    1.Discovery -> Inspiration and decide features for the dream site.
+    2.Design -> Creating WireFrames and then ful Design mockups.
+    3.Code/Development -> Implementing the designs and features.
+    4.QA -> Testing and quality assurance phase.
+    5.Deployment -> Moving code to live server.
+
+To create Laravel project, Composer should be installed, It is the package and dependencies manager for PHP.
+    Go to the directory and run command below to create new Laravel Project.
+        composer create-project laravel/laravel –-prefer-dist
+
+Command line interface used in Laravel is called Artisan. So to start the Laravel service by this command.
+    php artisan serve
+    
